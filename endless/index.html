@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!-- HTML technical meta data -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- HTML document meta data -->
+    <title>ENDLESS / jQuery Plugin</title>
+    <meta name="description" content="A stunning slideshow with infinite zoom and parallax effect">
+    <meta name="author" content="Thierry Thiers" />
+    <meta name="copyright" content="Copyright © 2017 Thierry Thiers" />
+
+    <!-- Facebook meta data (Open Graph) -->
+    <meta property="og:title" content="ENDLESS / jQuery Plugin">
+    <meta property="og:description" content="A stunning slideshow with infinite zoom and parallax effect">
+    <meta property="og:image" content="http://www.i-creativ.com/endless/assets/share.jpg">
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- UIkit framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/css/uikit.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit-icons.min.js"></script>
+
+    <!-- Highlight plugin -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- JSX Graph library -->
+    <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script>
+
+    <!-- JS Social plugin -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+
+
+    <!-- Style sheet -->
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+
+<!--
+--------------------------------------------------------------------------------
+MODAL: Available soon...
+--------------------------------------------------------------------------------
+-->
+<div id="modal-center" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Available soon...</h2>
+        </div>
+        <div class="uk-modal-body">
+            <p>The resource you requested will be available very soon.<br/>Please, visit us again later.</p>
+            <p>Sorry and thank you.</p>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+        </div>
+    </div>
+</div>
+
+<!--
+--------------------------------------------------------------------------------
+MODAL: Share
+--------------------------------------------------------------------------------
+-->
+<div id="modal-share" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Share ENDLESS plugin!</h2>
+        </div>
+        <div class="uk-modal-body">
+            <div class="uk-text-center" id="social-sharing-popup" style="font-size: 12px;"></div>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+        </div>
+    </div>
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+FULL PAGE START SCREEN
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-home"></a>
+<div class="uk-background-secondary">
+
+    <!-- Sticky header wrapper -->
+    <div id="sticky-header-wrapper">
+
+        <div id="section-header" class="uk-background-secondary uk-light uk-box-shadow-large" uk-sticky="sel-target: .uk-container; cls-active: uk-navbar-sticky">
+
+            <!-- NAVBAR PANEL -->
+            <div class="uk-container uk-container-small uk-container-center">
+
+                <nav class="uk-navbar-container uk-navbar-transparent uk-light" uk-navbar>
+
+                    <!-- Left items -->
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-item uk-logo uk-visible@m" href="#anchor-section-home" uk-scroll>ENDLESS</a>
+                        <ul class="uk-navbar-nav" uk-scrollspy-nav="closest: li; offset:30;">
+                            <li><a class="uk-navbar-item uk-icon uk-hidden@m" href="#anchor-section-home" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: home" title="Home"></span></a></li>
+                            <li><a href="#anchor-section-about" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: commenting" title="About"></span><span class="uk-visible@m">About</span></a></li>
+                            <li><a href="#anchor-section-features" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: list" title="Features"></span><span class="uk-visible@m">Features</span></a></li>
+                            <li><a href="#anchor-section-usage" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: code" title="Usage"></span><span class="uk-visible@m">Usage</span></a></li>
+                            <li><a href="#anchor-section-settings" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: settings" title="Settings"></span><span class="uk-visible@m">Settings</span></a></li>
+                            <li><a href="#anchor-section-images" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: image" title="Images"></span><span class="uk-visible@m">Images</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Right items -->
+                    <div class="uk-navbar-right">
+                        <ul class="uk-navbar-nav">
+                            <li><a href="#modal-share" uk-toggle><span class="uk-icon" uk-icon="icon: social" title="Share"></span></a></li>
+                            <li><a href="#modal-center" uk-toggle><span class="uk-icon" uk-icon="icon: download" title="Download"></span></a></li>
+                            <li><a href="#modal-center" uk-toggle><span class="uk-icon" uk-icon="icon: github" title="GitHub"></span></a></li>
+                        </ul>
+                    </div>
+
+                </nav>
+
+            </div>
+
+            <!-- BANNER / ENDLESS SLIDESHOW -->
+            <div id="banner" class="banner uk-background-secondary boundary-align">
+                <div class="banner-head uk-height-1-1 uk-flex uk-flex-center uk-flex-middle">
+                    <div>
+                        <h1>ENDLESS / jQuery Plugin
+                            <span>A stunning slideshow with infinite zoom and parallax effect</span>
+                        </h1>
+                        <div id="spinner" uk-spinner></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TWEAKERS -->
+            <div id="section-tweakers" class="uk-section uk-section-secondary uk-section-small uk-padding-remove-top uk-modal" uk-dropdown="mode: click; pos: bottom-justify; boundary: .boundary-align; boundary-align: true; animation: uk-animation-slide-bottom, uk-animation-slide-top-small; duration: 500; delay-show: 500; delay-hide: 250">
+
+                <div class="uk-section uk-section-secondary uk-section-small uk-padding-remove-top">
+
+                    <div class="uk-container uk-container-small uk-container-center">
+
+                        <!-- Placeholder to make parent container occupying all available width. -->
+                        <div style="visibility: hidden; height:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lacus nunc, mattis sed gravida non, auctor vitae augue. Nullam venenatis sapien ut risus aliquam, in fermentum dolor imperdiet.</div>
+
+                            <ul class="uk-tab uk-flex-center uk-child-width-expand" uk-switcher="duration: 350; animation: uk-animation-slide-right, uk-animation-slide-left;">
+                                <li><a href="#">Basic</a></li>
+                                <li><a href="#">Speed</a></li>
+                                <li><a href="#">Parallax</a></li>
+                                <li><a href="#">Color</a></li>
+                            </ul>
+
+                            <div class="uk-switcher uk-margin">
+
+                                <div class="fit-width widget">
+                                    <div class="uk-child-width-1-2@s" uk-grid>
+                                        <div>
+                                            <div id="options-graph" class="jxgbox graph"></div>
+                                        </div>
+                                        <div>
+                                            <div id="options-tweaker" class="jxgbox tweaker"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fit-width widget">
+                                    <div class="uk-child-width-1-2@s" uk-grid>
+                                        <div>
+                                            <div id="speedfx-graph" class="jxgbox graph"></div>
+                                        </div>
+                                        <div>
+                                            <div id="speedfx-tweaker" class="jxgbox tweaker"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fit-width widget">
+                                    <div class="uk-child-width-1-2@s" uk-grid>
+                                        <div>
+                                            <div id="parallaxfx-graph" class="jxgbox graph"></div>
+                                        </div>
+                                        <div>
+                                            <div id="parallaxfx-tweaker" class="jxgbox tweaker"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fit-width widget">
+                                    <div class="uk-child-width-1-2@s" uk-grid>
+                                        <div>
+                                            <div id="colorfx-graph" class="jxgbox jxgbox graph"></div>
+                                        </div>
+                                        <div>
+                                            <div id="colorfx-tweaker" class="jxgbox jxgbox tweaker"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        <!-- End of sticky header wrapper -->
+        </div>
+
+        <!-- Hero panel -->
+        <a id="anchor-section-hero"></a>
+        <div id="section-hero" class="uk-section uk-section-secondary uk-section-small uk-flex uk-flex-middle">
+
+            <div class="uk-container uk-container-small uk-container-center">
+
+                <blockquote cite="#"><span class="uk-text-large slogan">Yes, another slideshow plugin... But a stunning one!</span><span class="uk-text-muted uk-visible@s"><br/>The slideshow presented above is made from only 25 images! And the result is frankly bluffing, right? It looks quite like a movie, no?</span></blockquote>
+
+                <div class="uk-child-width-1-3@s" uk-grid uk-height-match="target: > div > .uk-card" uk-scrollspy="target: > div; cls:uk-animation-scale-up; delay: 500; repeat: false">
+
+                    <div>
+                        <a onclick="resizeBanner(true);">
+                        <div id="button-card-responsive" class="uk-card uk-card-primary uk-card-body uk-padding-remove-horizontal uk-border-rounded uk-card-hover">
+                            <p class="uk-text-lead uk-text-center"><span class="uk-margin-left uk-margin-right" uk-icon="icon: phone; ratio: 2.5"></span><br class="uk-visible@s"/>Responsive</p>
+                        </div>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="#anchor-section-settings" uk-scroll>
+                        <div id="button-card-configurable" class="uk-card uk-card-primary uk-card-body uk-padding-remove-horizontal uk-border-rounded uk-card-hover">
+                            <p class="uk-text-lead uk-text-center"><span class="uk-margin-left uk-margin-right" uk-icon="icon: settings; ratio: 2.5"></span><br class="uk-visible@s"/>Configurable</p>
+                        </div>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a uk-toggle="target: #section-tweakers; mode: click">
+                        <div id="button-card-controllable" class="uk-card uk-card-primary uk-card-body uk-padding-remove-horizontal uk-border-rounded uk-card-hover" >
+                            <p class="uk-text-lead uk-text-center"><span class="uk-margin-left uk-margin-right" uk-icon="icon: play-circle; ratio: 2.5"></span><br class="uk-visible@s"/>Controllable</p>
+                        </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <p class="uk-margin-large-top uk-text-center" uk-scrollspy="cls: uk-animation-scale-up; delay: 250; repeat: true"><a href="#modal-center" uk-toggle class="uk-button uk-button-danger uk-button-large uk-border-rounded uk-text-bold">Download now</a></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<!-- End of full start screen wrapper -->
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION: ABOUT
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-about"></a>
+<div id="section-about" class="uk-section">
+
+    <div class="uk-container uk-container-small">
+
+        <div class="uk-grid-divider" uk-grid>
+
+            <div class="uk-width-2-3@m">
+
+                <h2>About ENDLESS plugin</h2>
+
+                <h3>License</h3>
+
+                <p>ENDLESS plugin is governed by the CeCILL-C license under French law and abiding by the rules of distribution of free software. You can use, modify and/or redistribute the ENDLESS plugin under the terms of the CeCILL-C license as circulated by CEA, CNRS and INRIA at the following URL: <a href="http://www.cecill.info/licences.en.html">http://www.cecill.info</a>.</p>
+
+
+                <h3>Get the source code</h3>
+
+                <p>The source code of this plugin is hosted as an open source project on GitHub: <a href="https://github.com/webcoder31/endless">https://github.com/webcoder31/endless</a>.</p>
+
+
+                <h3>Report issues</h3>
+
+                <p>Any issue should be reported at the following URL: <a href="https://github.com/webcoder31/endless/issues">https://github.com/webcoder31/endless/issues</a>.</p>
+
+
+                <h3>Contribute</h3>
+
+                <p>Any contribution is welcome and may be submitted at the following URL: <a href="https://github.com/webcoder31/endless/pulls">https://github.com/webcoder31/endless/pulls</a>.</p>
+
+            </div>
+
+            <div id="about-author" class="uk-width-1-3@m" uk-scrollspy="target: img; cls:uk-animation-scale-up; delay: 250; repeat: true">
+
+                <h2><img class="uk-border-circle uk-align-center uk-margin-remove-top uk-responsive-width uk-visible@m" src="assets/thierry-thiers.jpg" /><div class="uk-display-inline-block uk-align-right uk-margin-remove-top uk-margin-remove-bottom uk-width-1-3 uk-hidden@m"><img class="uk-border-circle" src="assets/thierry-thiers.jpg" /></div>About the author</h2>
+
+                <p class="uk-text-justify">I am Thierry Thiers, a French web developer located in Toulouse. As a consultant, I regularly search for new missions. So, if you find my works awesome and you're looking to hire a good guy, I'm&nbsp;your&nbsp;man!&nbsp;;)</p>
+
+                <p>Best regards</p>
+
+                <p class="uk-text-justify uk-text-small"><a href="mailto:webcoder31@gmail.com"><i class="fa fa-envelope" style="margin-right: 8px;"></i>webcoder31@gmail.com</a></p>
+
+                <p class="uk-text-justify uk-text-small uk-text-muted">For a full resume, please, review my <a href="https://www.linkedin.com/in/thierry-thiers-54090534/">LinkedIn<i class="fa fa-linkedin-square" style="margin-left: 4px;"></i></a> profile.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION: FEATURES
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-features"></a>
+<div id="section-features" class="uk-section uk-section-muted">
+
+    <div class="uk-container uk-container-small uk-container-center">
+
+        <h2>Slideshow features</h2>
+
+        <p>ENDLESS plugin is a reactive slideshow that zooms indefinitely on a set of images. It provides several settings and configurable effects to meet your needs.</p>
+
+        <p>By playing on all or part of these features you can, using a few well chosen images and smartly prepared, get a slideshow resembling a video. For example, the slideshow presented in the banner of this page is made from only 25 images! And the result is frankly amazing, right?</p>
+
+
+        <h3><i class="fa fa-sliders" style="margin-right: 16px;"></i>Basic options</h3>
+
+        <p>The plugin provides several basic options that allow to:</p>
+        <ul class="uk-list uk-list-bullet">
+            <li>Randomize the order of images at the start of the slideshow.</li>
+            <li>Convert color images into grayscale images.</li>
+            <li>Set the opacity of superimposition of the images.</li>
+            <li>Set the location of the vanishing point of the slideshow.</li>
+            <li>Set the slideshow speed (forward and backward).</li>
+        </ul>
+
+
+        <h3><i class="fa fa-magic" style="margin-right: 16px;"></i>Built-in effects</h3>
+
+        <p>In addition to the previous options, 3 configurable built-in effects are available to:</p>
+        <ul class="uk-list uk-list-bullet">
+            <li>Vary the speed of the slideshow by means of a periodic function that can be parameterized.</li>
+            <li>Apply a parallax effect along the X and Y axes which is governed via two distinct parameterizable periodic functions.</li>
+            <li>Modify the hue of the images by means of a parameterizable function linked to the real time speed of the slideshow.</li>
+        </ul>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION: USAGE
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-usage"></a>
+<div id="section-usage" class="uk-section">
+
+    <div class="uk-container uk-container-small uk-container-center">
+
+        <h2>How to use?</h2>
+
+        <p>You can bind ENDLESS plugin to any block type element, usualy to a <code>div</code> element. The plugin will then create an underlying <code>canvas</code> in which the slideshow will be executed, allowing you to define a visible content into the block type container that overlay the slideshow. If the container to which you assign the slideshow is resized, the slideshow will also be resized while maintaining the aspect ratio of the images.</p>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span>Several distinct instances of the plugin may be used in the same page.</p>
+
+        <p class="uk-text-bold">Basic example showing all available parameters and hooks with their default values (just cut'n paste and you're done):</p>
+
+        <div class="uk-container uk-padding-small uk-background-secondary fit-width">
+
+            <pre class="uk-overflow-auto"><code>&lt;!-- Slideshow placeholder --&gt;
+&lt;div id=&quot;slideshow&quot;&gt;
+    &lt;!-- Your content here if any --&gt;
+&lt;/div&gt;
+
+&lt;!-- Load jQuery library and the ENDLESS plugin --&gt;
+&lt;script type="text/javascript" src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="endless.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Page script --&gt;
+&lt;script type="text/javascript"&gt;
+
+    $(document).ready(function() {
+
+        // Initialize the slideshow.
+        var slideshow = $('#slideshow').endless({
+
+            // Images list (required)
+            images: [
+                'images/image-01.png',
+                'images/image-02.png',
+                // ...
+                'images/image-xx.png'
+            ],
+
+            // Basic parameters
+            shuffle: true,
+            grayscale: false,
+            opacity: 100,
+            vpOffsetFactorX: 0,
+            vpOffsetFactorY: 0,
+            fxCycleDuration: 30,
+            speed: 10,
+
+            // Speed FX parameters
+            speedFX: true,
+            speedFXOffset: 1.20,
+            speedFXGain: 0.70,
+            speedFXDamping: 1.25,
+            speedFXFrequency: 1,
+            speedFXPhase: -1.45,
+
+            // Parallax FX parameters
+            parallaxFX: true,
+            parallaxFXGainX: 0.55,
+            parallaxFXFrequencyX: 3,
+            parallaxFXPhaseX: -0.75,
+            parallaxFXGainY: 0.45,
+            parallaxFXFrequencyY: 4,
+            parallaxFXPhaseY: 0.35,
+
+            // Hue FX parameters
+            hueFX: true,
+            hueFXFrequency: 6,
+
+            // Hooks
+            loaded: function() {},
+            beforeAnimate: function(time, clock) {},
+            afterAnimate: function(time, clock, fxValues) {}
+        });
+
+        // Start the slideshow.
+        slideshow.endless('start');
+    });
+
+&lt;/script&gt;</code></pre>
+
+        </div>
+
+
+        <h3>Commands</h3>
+
+        <p>The plugin provides two commands:</p>
+        <ul class="uk-list uk-list-bullet">
+            <li><code class="uk-text-bold">start</code> which should be used to start the animation.</li>
+            <li><code class="uk-text-bold">stop</code> which should be used to pause the animation.</li>
+        </ul>
+
+        <p class="uk-text-bold">The following example illustrates how to control the slideshow with a button:</p>
+
+        <div class="uk-container uk-padding-small uk-background-secondary fit-width">
+
+            <pre class="uk-overflow-auto"><code>&lt;!-- Slideshow placeholder --&gt;
+&lt;div id=&quot;slideshow&quot;&gt;&lt;/div&gt;
+
+&lt;!-- START / STOP button --&gt;
+&lt;button id="button"&gt;STOP&lt;/button&gt;
+
+&lt;!-- Load jQuery library and the ENDLESS plugin --&gt;
+&lt;script type="text/javascript" src="jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="endless.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Page script --&gt;
+&lt;script type="text/javascript"&gt;
+
+    $(document).ready(function() {
+
+        // Initialize the slideshow.
+        var slideshow = $('#slideshow').endless({
+            images: [
+                // ...
+            ]
+        });
+
+        // Start the slideshow automaticaly.
+        slideshow.endless('start');
+
+        // Start / stop the slideshow on button click.
+        $('#button').click(function() {
+            if($(this).html() == 'STOP') {
+                slideshow.endless('stop');
+                $(this).html('START');
+            }
+            else {
+                slideshow.endless('start');
+                $(this).html('STOP');
+            }
+        });
+    });
+
+&lt;/script&gt;</code></pre>
+
+        </div>
+
+
+        <h3>Hooks</h3>
+
+        <p>ENDLESS plugin offers 3 hooks that must be assigned callback functions to let you interacts whith the slideshow:
+
+        <ul>
+            <li class="uk-margin-small-bottom"><code class="uk-text-bold">loaded</code> which is triggered when all images are loaded. So you can, for exemple, easily control a spinner for a perfect user experience.</li>
+            <li class="uk-margin-small-bottom"><code class="uk-text-bold">beforeAnimate</code> which is triggered before each step of the animation.<br/>
+            The callback function which is assigned to this hook receive 2 values as arguments when called:
+                <ul>
+                    <li><code>time</code> which is the time elapsed since the slideshow has started in milliseconds.</li>
+                    <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
+                </ul>
+            </li>
+            <li><code class="uk-text-bold">afterAnimate</code> which is triggered after each step of the animation.<br/>
+            The callback function which is assigned to this hook receive 3 values as arguments when called:
+                <ul>
+                    <li><code>time</code> which is the time elapsed since the slideshow has started in milliseconds.</li>
+                    <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
+                    <li><code>fxValues</code> which is an object containing the values computed during the animation step.<br/>
+                    These are the following:
+                        <ul>
+                            <li><code>speed</code> which is the current speed.</li>
+                            <li><code>parallaxOffsetX</code> which is the current parallax offset (in pixels) on the X axis from the vanishing point.</li>
+                            <li><code>parallaxOffsetY</code> which is the current parallax offset (in pixels) on the Y axis from the vanishing point.</li>
+                            <li><code>hue</code> which is the current hue value in degrees.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span>Callback functions assigned to the hooks do not need to return value.</p>
+
+        <p class="uk-text-bold">The following sample shows how to use the <code>afterAnimate</code> hook to stop the slideshow after 15 seconds:</p>
+
+        <div class="uk-container uk-padding-small uk-background-secondary fit-width">
+
+            <pre class="uk-overflow-auto"><code>var slideshow = $('#slideshow').endless({
+    images: [
+        // ...
+    ],
+    afterAnimate: function(time, clock, fxValues) {
+        if(time > 15000) {
+            slideshow.endless('stop');
+        }
+    }
+});
+
+slideshow.endless('start');</code></pre>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION: SETTINGS
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-settings"></a>
+<div id="section-settings" class="uk-section uk-section-muted">
+
+    <div class="uk-container uk-container-small uk-container-center">
+
+        <h2>Plugin settings</h2>
+
+        <p>ENDLESS plugin has two kinds of parameters:</p>
+        <ul>
+            <li><b>Static parameters</b> that are read once at plugin initialisation time. These are the <code>images</code> and the <code>shuffle</code> parameters.</li>
+            <li><b>Runtime parameters</b> that are read/evaluated at each tick of the animation after the slideshow has started. These are all remaining parameters.</li>
+        </ul>
+
+        <p>Both can be passed either as normal options (ie. numbers, strings, booleans, etc.) for a static configuration or as <b>callback functions to control the slideshow in real time</b>.
+
+        <p>The callback functions receive 2 values as arguments when called:</p>
+        <ul>
+            <li><code>time</code> which is the time elapsed since the slideshow has started in milliseconds.</li>
+            <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
+        </ul>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span>Provided option values are sanitized by the plugin. For example, if you provide a value which is out of the accepeted range, it will be rounded to the nearest valid value.</p>
+
+        <p class="uk-text-bold">The following example illustrate how to control the <code>opacity</code> parameter with a callback function:</p>
+
+        <div class="uk-container uk-padding-small uk-background-secondary fit-width">
+
+            <pre class="uk-overflow-auto"><code>$('#slideshow').endless({
+    images: [
+        // ...
+    ],
+    opacity: function(time, clock) {
+        return 60 + 40 * Math.sin(4 * clock);
+    }
+});</code></pre>
+
+        </div>
+
+
+        <!-- BASIC PARAMETERS -->
+        <h3>Basic parameters</h3>
+
+        <p>These parameters let you set the basic options of the slideshow.</p>
+
+
+        <a id="anchor-parameter-images"></a>
+        <h4 class="uk-heading-bullet"><b>images</b> parameter (required)</h4>
+
+        <p>List of images that compose the slideshow. To obtain a smooth effect, you should at least use dozen of images. If you do not have enough images, you can specify some images twice or more in the list.</p>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span>Can be relative or absolute URL.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>array</code></td>
+                    <td><code>N.A.</code></td>
+                    <td><code>N.A.</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-shuffle"></a>
+        <h4 class="uk-heading-bullet"><b>shuffle</b> parameter</h4>
+
+        <p>Shuffle the order of images before launching the slideshow.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>false / true</code></td>
+                    <td><code>true</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-opacity"></a>
+        <h4 class="uk-heading-bullet"><b>opacity</b> parameter</h4>
+
+        <p>Images superimposition opacity.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0 / 100</code></td>
+                    <td><code>100</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-grayscale"></a>
+        <h4 class="uk-heading-bullet"><b>grayscale</b> parameter</h4>
+
+        <p>Converts images into grayscale.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>false / true</code></td>
+                    <td><code>false</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-vpOffsetFactorX"></a>
+        <h4 class="uk-heading-bullet"><b>vpOffsetFactorX</b> parameter</h4>
+
+        <p>Percentage offset of the X-coordinate of the vanishing point from the center of the slideshow.</p>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span><b>IMPORTANT</b>: If the parallax effect is activated, the absolute value of this parameter defines the maximum variation of the X-coordinate of the vanishing point (negative or positive). Therefore, the value <code>0</code> inhibits the parallax effect on the X axis.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>-100 / +100</code></td>
+                    <td><code>50</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-vpOffsetFactorY"></a>
+        <h4 class="uk-heading-bullet"><b>vpOffsetFactorY</b> parameter</h4>
+
+        <p>Percentage offset of the Y-coordinate of the vanishing point from the center of the slideshow.</p>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span><b>IMPORTANT</b>: If the parallax effect is activated, the absolute value of this parameter defines the maximum variation of the Y-coordinate of the vanishing point (negative or positive). Therefore, the value <code>0</code> inhibits the parallax effect on the Y axis.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>-100 / +100</code></td>
+                    <td><code>50</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-fxCycleDuration"></a>
+        <h4 class="uk-heading-bullet"><b>fxCycleDuration</b> parameter</h4>
+
+        <p>This define the base duration (in seconds) used to convert elapsed time since the slideshow has started to a cyclic value comprised between <code>-π</code> and <code>+π</code>.</p>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span>Built-in effects use this value as the base time to generate speed variation, parallax effect and images hue rotation.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>1 / 60</code></td>
+                    <td><code>30</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-speed"></a>
+        <h4 class="uk-heading-bullet"><b>speed</b> parameter</h4>
+
+        <p>This parameter defines the slideshow speed. This is the rate at which the slideshow zooms or de-zooms in the images that it superimposes successively on top of each other. Note that it's a relative value, without real unit.</p>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span>A negative value make the slideshow going backward.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>-100 / +100</code></td>
+                    <td><code>10</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- SPEED FX -->
+        <h3>Speed variation effect</h3>
+
+        <p>This effect controls dynamicaly the rate at which the slide show zooms or de-zooms in the images that it superimposes successively on top of each other.</p>
+
+        <p class="uk-text-bold">The speed variation effect is governed by the following periodic function:</p>
+
+        <p><code class="formula">s = ns * (O + G * sin(t * 1/2 * F + P + D * cos(t * 2 * F)))</code></p>
+
+        <p class="uk-text-bold">Where:</p>
+        <ul class="uk-list uk-list-bullet">
+            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
+            <li><code>s</code> is the variegated speed for the current elapsed time.</li>
+            <li><code>ns</code> is the nominal speed of the slideshow (see the <code><a href="#anchor-parameter-speed" uk-scroll>speed</a></code> parameter).</li>
+            <li><code>O</code> is a positive or negative offset allowing to shift up or down the speed variation (see the <code><a href="#anchor-parameter-speedFXOffset" uk-scroll>speedFXOffset</a></code> parameter).</li>
+            <li><code>G</code> is the gain (attenuation) of the speed variation effect (see the <code><a href="#anchor-parameter-speedFXGain" uk-scroll>speedFXGain</a></code> parameter).</li>
+            <li><code>D</code> is the gain of the damping of the speed variation effect (see the <code><a href="#anchor-parameter-speedFXDamping" uk-scroll>speedFXDamping</a></code> parameter).</li>
+            <li><code>F</code> is the frequency of the speed variation effect (see the <code><a href="#anchor-parameter-speedFXFrequency" uk-scroll>speedFXFrequency</a></code> parameter).</li>
+            <li><code>P</code> is the phase shift of the speed variation effect (see the <code><a href="#anchor-parameter-speedFXPhase" uk-scroll>speedFXPhase</a></code> parameter).</li>
+        </ul>
+
+
+        <a id="anchor-parameter-speedFX"></a>
+        <h4 class="uk-heading-bullet"><b>speedFX</b> parameter</h4>
+
+        <p>Enable speed variation effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>false / true</code></td>
+                    <td><code>true</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-speedFXOffset"></a>
+        <h4 class="uk-heading-bullet"><b>speedFXOffset</b> parameter</h4>
+
+        <p>Offset of the speed variation effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>-2.00 / +2.00</code></td>
+                    <td><code>1.20</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-speedFXGain"></a>
+        <h4 class="uk-heading-bullet"><b>speedFXGain</b> parameter</h4>
+
+        <p>Gain (attenuation) of the speed variation effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0.00 / 1.00</code></td>
+                    <td><code>0.70</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-speedFXDamping"></a>
+        <h4 class="uk-heading-bullet"><b>speedFXDamping</b> parameter</h4>
+
+        <p>Gain of the damping of the speed variation effect.</p>
+
+        <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span>The value <code>0</code> inhibits the damping.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>-2.00 / +2.00</code></td>
+                    <td><code>1.25</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-speedFXFrequency"></a>
+        <h4 class="uk-heading-bullet"><b>speedFXFrequency</b> parameter</h4>
+
+        <p>Frequency of the speed variation effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0 / 10</code></td>
+                    <td><code>1</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-speedFXPhase"></a>
+        <h4 class="uk-heading-bullet"><b>speedFXPhase</b> parameter</h4>
+
+        <p>Phase shift of the speed variation effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>-&#960; / +&#960;</code></td>
+                    <td><code>-1.45</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- PARALLAX FX -->
+        <h3>Parallax effect</h3>
+
+        <p>This effect controls the shifting of the slideshow images on the X and Y axes while continuously zooming in or out. Combined with the speed variation effect, this produces a parallax effect enhanced by a variable depth of field which makes the slideshow look almost like a video.</p>
+
+        <p class="uk-text-bold">The parallax effect is governed by two periodic functions controling the moving of the vanishing point on the two axes from the center of the slideshow:</p>
+
+        <p><code class="formula">x = sw/2 * GX * sin(t * FX + PX)</code></p>
+
+        <p class="uk-text-bold">Where:</p>
+        <ul class="uk-list uk-list-bullet">
+            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
+            <li><code>x</code> is the variegated delta (from the slideshow center) on the X axis for the current elapsed time.</li>
+            <li><code>sw</code> is the width of the slideshow.</li>
+            <li><code>GX</code> is the gain (attenuation) of the parallax effect on the X axis (see the <code><a href="#anchor-parameter-parallaxFXGainX" uk-scroll>parallaxFXGainX</a></code> parameter).</li>
+            <li><code>FX</code> is the frequency of the moving on the X axis (see the <code><a href="#anchor-parameter-parallaxFXFrequencyX" uk-scroll>parallaxFXFrequencyX</a></code> parameter).</li>
+            <li><code>PX</code> is the phase shift of the moving on the X axis (see the <code><a href="#anchor-parameter-parallaxFXPhaseX" uk-scroll>parallaxFXPhaseX</a></code> parameter).</li>
+        </ul>
+
+        <p><code class="formula">y = sh/2 * GY * cos(t * FY + PY)</code></p>
+
+        <p class="uk-text-bold">Where:</p>
+        <ul class="uk-list uk-list-bullet">
+            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
+            <li><code>y</code> is the variegated delta (from the slideshow center) on the Y axis for the current elapsed time.</li>
+            <li><code>sh</code> is the height of the slideshow.</li>
+            <li><code>GY</code> is the gain (attenuation) of parallax effect on  the Y axis (see the <code><a href="#anchor-parameter-parallaxFXGainY" uk-scroll>parallaxFXGainY</a></code> parameter).</li>
+            <li><code>FY</code> is the frequency of the moving on the Y axis (see the <code><a href="#anchor-parameter-parallaxFXFrequencyY" uk-scroll>parallaxFXFrequencyY</a></code> parameter).</li>
+            <li><code>PY</code> is the phase shift of the moving on the Y axis (see the <code><a href="#anchor-parameter-parallaxFXPhaseY" uk-scroll>parallaxFXPhaseY</a></code> parameter).</li>
+        </ul>
+
+
+        <a id="anchor-parameter-parallaxFX"></a>
+        <h4 class="uk-heading-bullet"><b>parallaxFX</b> parameter</h4>
+
+        <p>Enable parallax effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>false / true</code></td>
+                    <td><code>true</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-parallaxFXGainX"></a>
+        <h4 class="uk-heading-bullet"><b>parallaxFXGainX</b> parameter</h4>
+
+        <p>Gain (attenuation) of the X axis parallax effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0.00 / 1.00</code></td>
+                    <td><code>0.55</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-parallaxFXFrequencyX"></a>
+        <h4 class="uk-heading-bullet"><b>parallaxFXFrequencyX</b> parameter</h4>
+
+        <p>Frequency of the X axis parallax effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0 / 10</code></td>
+                    <td><code>3</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-parallaxFXPhaseX"></a>
+        <h4 class="uk-heading-bullet"><b>parallaxFXPhaseX</b> parameter</h4>
+
+        <p>Phase shift of the parallax effect on the X axis.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>-&#960; / +&#960;</code></td>
+                    <td><code>-0.75</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-parallaxFXGainY"></a>
+        <h4 class="uk-heading-bullet"><b>parallaxFXGainY</b> parameter</h4>
+
+        <p>Gain (attenuation) of the Y axis parallax effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0.00 / 1.00</code></td>
+                    <td><code>0.45</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-parallaxFXFrequencyY"></a>
+        <h4 class="uk-heading-bullet"><b>parallaxFXFrequencyY</b> parameter</h4>
+
+        <p>Frequency of the Y axis parallax effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0 / 10</code></td>
+                    <td><code>4</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-parallaxFXPhaseY"></a>
+        <h4 class="uk-heading-bullet"><b>parallaxFXPhaseY</b> parameter</h4>
+
+        <p>Phase shift of the parallax effect on the Y axis.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>-&#960; / +&#960;</code></td>
+                    <td><code>0.35</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- OPACITY FX -->
+        <h3>Opacity variation effect</h3>
+
+        <p>This effect cyclically modify the opacity of images of slideshow. It is dynamicaly weighted by the real time speed of the slideshow.</p>
+
+
+        <a id="anchor-parameter-opacityFX"></a>
+        <h4 class="uk-heading-bullet"><b>opacityFX</b> parameter</h4>
+
+        <p>Enable opacity variation effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>false / true</code></td>
+                    <td><code>true</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-opacityFXFrequency"></a>
+        <h4 class="uk-heading-bullet"><b>opacityFXFrequency</b> parameter</h4>
+
+        <p>Frequency of the opacity effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0 / 10</code></td>
+                    <td><code>6</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- HUE FX -->
+        <h3>Hue variation effect</h3>
+
+        <p>This effect cyclically modify the hue of images of slideshow. It is dynamicaly weighted by the real time speed of the slideshow.</p>
+
+
+        <a id="anchor-parameter-hueFX"></a>
+        <h4 class="uk-heading-bullet"><b>hueFX</b> parameter</h4>
+
+        <p>Enable hue variation effect.</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td><code>false / true</code></td>
+                    <td><code>true</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <a id="anchor-parameter-hueFXFrequency"></a>
+        <h4 class="uk-heading-bullet"><b>hueFXFrequency</b> parameter</h4>
+
+        <p>Frequency of the hue effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+
+        <table class="uk-table uk-table-justify uk-table-divider">
+            <thead>
+                <tr>
+                    <th class="uk-width-1-3">Type</th>
+                    <th class="uk-width-1-3">Range</th>
+                    <th class="uk-width-1-3">Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>number</code></td>
+                    <td><code>0 / 10</code></td>
+                    <td><code>6</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION: IMAGES
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-images"></a>
+<div id="section-images" class="uk-section">
+
+    <div class="uk-container uk-container-small uk-container-center">
+
+        <h2>Preparing images</h2>
+
+        <p>You can use and mix any type of images supported by web browsers, no matter they have different formats and dimensions. However, using image formats that support transparency, such as PNG or GIF, will allow you to achieve a smooth blend, avoiding the appearance of sharp breaks caused by the edges of the images. This will give you a perfect fade effect between images.</p>
+
+        <p>In general, the application of an eliptic transparent fade, making the edges of the images transparent, is enough to avoid the appearance of sharp breaks during the execution of the slideshow. Also, if you have transparent background images that are clearly cut out, you can use them as is.</p>
+
+        <p class="uk-text-bold">Here is an example illustrating a well prepared image:</p>
+
+        <div class="uk-child-width-1-4@m uk-child-width-1-2@s uk-margin-large-bottom" uk-grid uk-height-match="target: > div > .uk-card" uk-scrollspy="target: > div; cls:uk-animation-scale-up; delay: 500; repeat: true;" uk-lightbox="animation: scale">
+
+            <div>
+                <div class="uk-card uk-card-small uk-card-secondary fit-width">
+                    <div class="uk-card-media-bottom uk-text-center">
+                        <a href="assets/example-transparent-bg.png" data-caption="Transparent faded image..."><img src="assets/example-transparent-bg.png" alt=""></a>
+                    </div>
+                    <div class="uk-card-body">
+                        <p class="uk-h5 uk-text-center">Transparent faded image...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="uk-card uk-card-small uk-card-secondary fit-width">
+                    <div class="uk-card-media-bottom uk-text-center">
+                        <a href="assets/example-black-bg.png" data-caption="On top of a black background"><img src="assets/example-black-bg.png" alt=""></a>
+                    </div>
+                    <div class="uk-card-body">
+                        <p class="uk-h5 uk-text-center">On top of a black background</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="uk-card uk-card-small uk-card-secondary fit-width">
+                    <div class="uk-card-media-bottom uk-text-center">
+                        <a href="assets/example-white-bg.png" data-caption="On top of a white background"><img src="assets/example-white-bg.png" alt=""></a>
+                    </div>
+                    <div class="uk-card-body">
+                        <p class="uk-h5 uk-text-center">On top of a white background</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="uk-card uk-card-small uk-card-secondary fit-width">
+                    <div class="uk-card-media-bottom uk-text-center">
+                        <a href="assets/example-image-bg.png" data-caption="On top of any other image"><img src="assets/example-image-bg.png" alt=""></a>
+                    </div>
+                    <div class="uk-card-body">
+                        <p class="uk-h5 uk-text-center">On top of any other image</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+FOOTER
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-footer"></a>
+<div  id="section-footer" class="uk-section uk-section-secondary">
+
+    <div class="uk-container uk-container-small uk-container-center">
+
+        <div class="uk-text-center" id="social-sharing" style="font-size: 12px;"></div>
+
+        <p class="uk-text-center">Copyright © 2017 Thierry Thiers</p>
+
+        <p class="uk-text-center uk-text-small">Propulsed by <a href="https://getuikit.com/">UIkit</a>, <a href="https://jquery.com">jQuery</a>, <a href="http://jsxgraph.uni-bayreuth.de">JSXGraph</a>, <a href="https://highlightjs.org">highlight.js</a>, <a href="http://js-socials.com">jsSocials</a> and <a href="http://fontawesome.io">Font Awesome</a></p>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SCRIPTS
+--------------------------------------------------------------------------------
+-->
+<script type="text/javascript">
+
+    // Initialize code highlighting plugin.
+    hljs.initHighlightingOnLoad();
+
+    // Initialize social sharing plugin.
+    $(document).ready(function() {
+        $("#social-sharing, #social-sharing-popup").jsSocials({
+            shareIn: "popup",
+            showLabel: false,
+            showCount: false,
+            shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+        });
+
+        // $.rFrame({device:'Android',view:0});
+    });
+
+    if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent))
+    {
+        // If IE browser, use Babel transpiler because it is not ES6 compliant.
+        document.write('<script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"><\/script>');
+        document.write('<script type="text/babel" src="endless.js"><\/script>');
+        // document.write('<script src="http://www.i-creativ.com/endless/endless.js" type="text/babel"><\/script>');
+        document.write('<script type="text/babel" src="site.js" type="text/babel"><\/script>');
+        // document.write('<script src="http://www.i-creativ.com/endless/site.js" type="text/babel"><\/script>');
+    }
+    else
+    {
+        document.write('<script type="text/javascript" src="endless.js"><\/script>');
+        document.write('<script type="text/javascript" src="site.js"><\/script>');
+    }
+
+</script>
+
+
+</body>
+</html>
