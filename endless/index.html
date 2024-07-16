@@ -112,14 +112,14 @@ FULL PAGE START SCREEN
 
                     <!-- Left items -->
                     <div class="uk-navbar-left">
-                        <a class="uk-navbar-item uk-logo uk-visible@m" href="#anchor-section-home" uk-scroll>ENDLESS</a>
+                        <a class="uk-navbar-item uk-logo uk-visible@m" href="./index.html#anchor-section-home" uk-scroll>ENDLESS</a>
                         <ul class="uk-navbar-nav" uk-scrollspy-nav="closest: li; offset:30;">
-                            <li><a class="uk-navbar-item uk-icon uk-hidden@m" href="#anchor-section-home" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: home" title="Home"></span></a></li>
-                            <li><a href="#anchor-section-about" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: commenting" title="About"></span><span class="uk-visible@m">About</span></a></li>
-                            <li><a href="#anchor-section-features" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: list" title="Features"></span><span class="uk-visible@m">Features</span></a></li>
-                            <li><a href="#anchor-section-usage" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: code" title="Usage"></span><span class="uk-visible@m">Usage</span></a></li>
-                            <li><a href="#anchor-section-settings" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: settings" title="Settings"></span><span class="uk-visible@m">Settings</span></a></li>
-                            <li><a href="#anchor-section-images" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: image" title="Images"></span><span class="uk-visible@m">Images</span></a></li>
+                            <li><a class="uk-navbar-item uk-icon uk-hidden@m" href="./index.html#anchor-section-home" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: home" title="Home"></span></a></li>
+                            <li><a href="./index.html#anchor-section-about" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: commenting" title="About"></span><span class="uk-visible@m">About</span></a></li>
+                            <li><a href="./index.html#anchor-section-features" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: list" title="Features"></span><span class="uk-visible@m">Features</span></a></li>
+                            <li><a href="./index.html#anchor-section-usage" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: code" title="Usage"></span><span class="uk-visible@m">Usage</span></a></li>
+                            <li><a href="./index.html#anchor-section-settings" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: settings" title="Settings"></span><span class="uk-visible@m">Settings</span></a></li>
+                            <li><a href="./index.html#anchor-section-images" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: image" title="Images"></span><span class="uk-visible@m">Images</span></a></li>
                         </ul>
                     </div>
 
@@ -143,6 +143,7 @@ FULL PAGE START SCREEN
                         <h1>ENDLESS / jQuery Plugin
                             <span>A stunning slideshow with infinite zoom and parallax effect</span>
                         </h1>
+                        <p>[ click to enlarge ]</p>
                         <div id="spinner" uk-spinner></div>
                     </div>
                 </div>
@@ -159,24 +160,13 @@ FULL PAGE START SCREEN
                         <div style="visibility: hidden; height:0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lacus nunc, mattis sed gravida non, auctor vitae augue. Nullam venenatis sapien ut risus aliquam, in fermentum dolor imperdiet.</div>
 
                             <ul class="uk-tab uk-flex-center uk-child-width-expand" uk-switcher="duration: 350; animation: uk-animation-slide-right, uk-animation-slide-left;">
-                                <li><a href="#">Basic</a></li>
                                 <li><a href="#">Speed</a></li>
                                 <li><a href="#">Parallax</a></li>
                                 <li><a href="#">Color</a></li>
+                                <li><a href="#">Options</a></li>
                             </ul>
 
                             <div class="uk-switcher uk-margin">
-
-                                <div class="fit-width widget">
-                                    <div class="uk-child-width-1-2@s" uk-grid>
-                                        <div>
-                                            <div id="options-graph" class="jxgbox graph"></div>
-                                        </div>
-                                        <div>
-                                            <div id="options-tweaker" class="jxgbox tweaker"></div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="fit-width widget">
                                     <div class="uk-child-width-1-2@s" uk-grid>
@@ -207,6 +197,17 @@ FULL PAGE START SCREEN
                                         </div>
                                         <div>
                                             <div id="colorfx-tweaker" class="jxgbox jxgbox tweaker"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="fit-width widget">
+                                    <div class="uk-child-width-1-2@s" uk-grid>
+                                        <div>
+                                            <div id="options-graph" class="jxgbox graph"></div>
+                                        </div>
+                                        <div>
+                                            <div id="options-tweaker" class="jxgbox tweaker"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -243,7 +244,7 @@ FULL PAGE START SCREEN
                     </div>
 
                     <div>
-                        <a href="#anchor-section-settings" uk-scroll>
+                        <a href="./index.html#anchor-section-settings" uk-scroll>
                         <div id="button-card-configurable" class="uk-card uk-card-primary uk-card-body uk-padding-remove-horizontal uk-border-rounded uk-card-hover">
                             <p class="uk-text-lead uk-text-center"><span class="uk-margin-left uk-margin-right" uk-icon="icon: settings; ratio: 2.5"></span><br class="uk-visible@s"/>Configurable</p>
                         </div>
@@ -528,14 +529,14 @@ SECTION: USAGE
             The callback function which is assigned to this hook receive 2 values as arguments when called:
                 <ul>
                     <li><code>time</code> which is the time elapsed since the slideshow has started in milliseconds.</li>
-                    <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
+                    <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
                 </ul>
             </li>
             <li><code class="uk-text-bold">afterAnimate</code> which is triggered after each step of the animation.<br/>
             The callback function which is assigned to this hook receive 3 values as arguments when called:
                 <ul>
                     <li><code>time</code> which is the time elapsed since the slideshow has started in milliseconds.</li>
-                    <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
+                    <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
                     <li><code>fxValues</code> which is an object containing the values computed during the animation step.<br/>
                     These are the following:
                         <ul>
@@ -598,7 +599,7 @@ SECTION: SETTINGS
         <p>The callback functions receive 2 values as arguments when called:</p>
         <ul>
             <li><code>time</code> which is the time elapsed since the slideshow has started in milliseconds.</li>
-            <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
+            <li><code>clock</code> which is the elapsed time converted to cyclic value from <code>-π</code> to <code>+π</code>. The duration of the cycle is defined by the parameter <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code>.</li>
         </ul>
 
         <p class="uk-text-warning"><i class="fa fa-lg fa-info-circle uk-margin-small-right"></i></span>Provided option values are sanitized by the plugin. For example, if you provide a value which is out of the accepeted range, it will be rounded to the nearest valid value.</p>
@@ -830,14 +831,14 @@ SECTION: SETTINGS
 
         <p class="uk-text-bold">Where:</p>
         <ul class="uk-list uk-list-bullet">
-            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
+            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
             <li><code>s</code> is the variegated speed for the current elapsed time.</li>
-            <li><code>ns</code> is the nominal speed of the slideshow (see the <code><a href="#anchor-parameter-speed" uk-scroll>speed</a></code> parameter).</li>
-            <li><code>O</code> is a positive or negative offset allowing to shift up or down the speed variation (see the <code><a href="#anchor-parameter-speedFXOffset" uk-scroll>speedFXOffset</a></code> parameter).</li>
-            <li><code>G</code> is the gain (attenuation) of the speed variation effect (see the <code><a href="#anchor-parameter-speedFXGain" uk-scroll>speedFXGain</a></code> parameter).</li>
-            <li><code>D</code> is the gain of the damping of the speed variation effect (see the <code><a href="#anchor-parameter-speedFXDamping" uk-scroll>speedFXDamping</a></code> parameter).</li>
-            <li><code>F</code> is the frequency of the speed variation effect (see the <code><a href="#anchor-parameter-speedFXFrequency" uk-scroll>speedFXFrequency</a></code> parameter).</li>
-            <li><code>P</code> is the phase shift of the speed variation effect (see the <code><a href="#anchor-parameter-speedFXPhase" uk-scroll>speedFXPhase</a></code> parameter).</li>
+            <li><code>ns</code> is the nominal speed of the slideshow (see the <code><a href="./index.html#anchor-parameter-speed" uk-scroll>speed</a></code> parameter).</li>
+            <li><code>O</code> is a positive or negative offset allowing to shift up or down the speed variation (see the <code><a href="./index.html#anchor-parameter-speedFXOffset" uk-scroll>speedFXOffset</a></code> parameter).</li>
+            <li><code>G</code> is the gain (attenuation) of the speed variation effect (see the <code><a href="./index.html#anchor-parameter-speedFXGain" uk-scroll>speedFXGain</a></code> parameter).</li>
+            <li><code>D</code> is the gain of the damping of the speed variation effect (see the <code><a href="./index.html#anchor-parameter-speedFXDamping" uk-scroll>speedFXDamping</a></code> parameter).</li>
+            <li><code>F</code> is the frequency of the speed variation effect (see the <code><a href="./index.html#anchor-parameter-speedFXFrequency" uk-scroll>speedFXFrequency</a></code> parameter).</li>
+            <li><code>P</code> is the phase shift of the speed variation effect (see the <code><a href="./index.html#anchor-parameter-speedFXPhase" uk-scroll>speedFXPhase</a></code> parameter).</li>
         </ul>
 
 
@@ -938,7 +939,7 @@ SECTION: SETTINGS
         <a id="anchor-parameter-speedFXFrequency"></a>
         <h4 class="uk-heading-bullet"><b>speedFXFrequency</b> parameter</h4>
 
-        <p>Frequency of the speed variation effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+        <p>Frequency of the speed variation effect compared to one cycle of the built-in effects (see the <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
 
         <table class="uk-table uk-table-justify uk-table-divider">
             <thead>
@@ -992,24 +993,24 @@ SECTION: SETTINGS
 
         <p class="uk-text-bold">Where:</p>
         <ul class="uk-list uk-list-bullet">
-            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
+            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
             <li><code>x</code> is the variegated delta (from the slideshow center) on the X axis for the current elapsed time.</li>
             <li><code>sw</code> is the width of the slideshow.</li>
-            <li><code>GX</code> is the gain (attenuation) of the parallax effect on the X axis (see the <code><a href="#anchor-parameter-parallaxFXGainX" uk-scroll>parallaxFXGainX</a></code> parameter).</li>
-            <li><code>FX</code> is the frequency of the moving on the X axis (see the <code><a href="#anchor-parameter-parallaxFXFrequencyX" uk-scroll>parallaxFXFrequencyX</a></code> parameter).</li>
-            <li><code>PX</code> is the phase shift of the moving on the X axis (see the <code><a href="#anchor-parameter-parallaxFXPhaseX" uk-scroll>parallaxFXPhaseX</a></code> parameter).</li>
+            <li><code>GX</code> is the gain (attenuation) of the parallax effect on the X axis (see the <code><a href="./index.html#anchor-parameter-parallaxFXGainX" uk-scroll>parallaxFXGainX</a></code> parameter).</li>
+            <li><code>FX</code> is the frequency of the moving on the X axis (see the <code><a href="./index.html#anchor-parameter-parallaxFXFrequencyX" uk-scroll>parallaxFXFrequencyX</a></code> parameter).</li>
+            <li><code>PX</code> is the phase shift of the moving on the X axis (see the <code><a href="./index.html#anchor-parameter-parallaxFXPhaseX" uk-scroll>parallaxFXPhaseX</a></code> parameter).</li>
         </ul>
 
         <p><code class="formula">y = sh/2 * GY * cos(t * FY + PY)</code></p>
 
         <p class="uk-text-bold">Where:</p>
         <ul class="uk-list uk-list-bullet">
-            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
+            <li><code>t</code> is the elapsed time converted to a cyclic value from <code>-π</code> to <code>+π</code> (see the <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</li>
             <li><code>y</code> is the variegated delta (from the slideshow center) on the Y axis for the current elapsed time.</li>
             <li><code>sh</code> is the height of the slideshow.</li>
-            <li><code>GY</code> is the gain (attenuation) of parallax effect on  the Y axis (see the <code><a href="#anchor-parameter-parallaxFXGainY" uk-scroll>parallaxFXGainY</a></code> parameter).</li>
-            <li><code>FY</code> is the frequency of the moving on the Y axis (see the <code><a href="#anchor-parameter-parallaxFXFrequencyY" uk-scroll>parallaxFXFrequencyY</a></code> parameter).</li>
-            <li><code>PY</code> is the phase shift of the moving on the Y axis (see the <code><a href="#anchor-parameter-parallaxFXPhaseY" uk-scroll>parallaxFXPhaseY</a></code> parameter).</li>
+            <li><code>GY</code> is the gain (attenuation) of parallax effect on  the Y axis (see the <code><a href="./index.html#anchor-parameter-parallaxFXGainY" uk-scroll>parallaxFXGainY</a></code> parameter).</li>
+            <li><code>FY</code> is the frequency of the moving on the Y axis (see the <code><a href="./index.html#anchor-parameter-parallaxFXFrequencyY" uk-scroll>parallaxFXFrequencyY</a></code> parameter).</li>
+            <li><code>PY</code> is the phase shift of the moving on the Y axis (see the <code><a href="./index.html#anchor-parameter-parallaxFXPhaseY" uk-scroll>parallaxFXPhaseY</a></code> parameter).</li>
         </ul>
 
 
@@ -1062,7 +1063,7 @@ SECTION: SETTINGS
         <a id="anchor-parameter-parallaxFXFrequencyX"></a>
         <h4 class="uk-heading-bullet"><b>parallaxFXFrequencyX</b> parameter</h4>
 
-        <p>Frequency of the X axis parallax effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+        <p>Frequency of the X axis parallax effect compared to one cycle of the built-in effects (see the <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
 
         <table class="uk-table uk-table-justify uk-table-divider">
             <thead>
@@ -1131,7 +1132,7 @@ SECTION: SETTINGS
         <a id="anchor-parameter-parallaxFXFrequencyY"></a>
         <h4 class="uk-heading-bullet"><b>parallaxFXFrequencyY</b> parameter</h4>
 
-        <p>Frequency of the Y axis parallax effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+        <p>Frequency of the Y axis parallax effect compared to one cycle of the built-in effects (see the <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
 
         <table class="uk-table uk-table-justify uk-table-divider">
             <thead>
@@ -1206,7 +1207,7 @@ SECTION: SETTINGS
         <a id="anchor-parameter-opacityFXFrequency"></a>
         <h4 class="uk-heading-bullet"><b>opacityFXFrequency</b> parameter</h4>
 
-        <p>Frequency of the opacity effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+        <p>Frequency of the opacity effect compared to one cycle of the built-in effects (see the <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
 
         <table class="uk-table uk-table-justify uk-table-divider">
             <thead>
@@ -1258,7 +1259,7 @@ SECTION: SETTINGS
         <a id="anchor-parameter-hueFXFrequency"></a>
         <h4 class="uk-heading-bullet"><b>hueFXFrequency</b> parameter</h4>
 
-        <p>Frequency of the hue effect compared to one cycle of the built-in effects (see the <code><a href="#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
+        <p>Frequency of the hue effect compared to one cycle of the built-in effects (see the <code><a href="./index.html#anchor-parameter-fxCycleDuration" uk-scroll>fxCycleDuration</a></code> parameter).</p>
 
         <table class="uk-table uk-table-justify uk-table-divider">
             <thead>
@@ -1292,23 +1293,23 @@ SECTION: IMAGES
 
     <div class="uk-container uk-container-small uk-container-center">
 
-        <h2>Preparing images</h2>
+        <h2>Images</h2>
 
-        <p>You can use and mix any type of images supported by web browsers, no matter they have different formats and dimensions. However, using image formats that support transparency, such as PNG or GIF, will allow you to achieve a smooth blend, avoiding the appearance of sharp breaks caused by the edges of the images. This will give you a perfect fade effect between images.</p>
+        <p>You can use and mix any type of images supported by web browsers, no matter they have different formats and dimensions. Path to an image may be either a relative URL to a local asset or a full external URL.</p>
 
-        <p>In general, the application of an eliptic transparent fade, making the edges of the images transparent, is enough to avoid the appearance of sharp breaks during the execution of the slideshow. Also, if you have transparent background images that are clearly cut out, you can use them as is.</p>
+        <p>Once loaded, a transform matrix is applyed to images, making their edges blured and faded to transparent color in order to achieve the following effect.</p>
 
-        <p class="uk-text-bold">Here is an example illustrating a well prepared image:</p>
+        <p class="uk-text-bold">How images are pre-processed before being used by Endless slideshow:</p>
 
         <div class="uk-child-width-1-4@m uk-child-width-1-2@s uk-margin-large-bottom" uk-grid uk-height-match="target: > div > .uk-card" uk-scrollspy="target: > div; cls:uk-animation-scale-up; delay: 500; repeat: true;" uk-lightbox="animation: scale">
 
             <div>
                 <div class="uk-card uk-card-small uk-card-secondary fit-width">
                     <div class="uk-card-media-bottom uk-text-center">
-                        <a href="assets/example-transparent-bg.png" data-caption="Transparent faded image..."><img src="assets/example-transparent-bg.png" alt=""></a>
+                        <a href="assets/example-transparent-bg.png" data-caption="Transparent faded image..."><img src="assets/example-black-bg.png" alt=""></a>
                     </div>
                     <div class="uk-card-body">
-                        <p class="uk-h5 uk-text-center">Transparent faded image...</p>
+                        <p class="uk-h5 uk-text-center">Original image</p>
                     </div>
                 </div>
             </div>
@@ -1316,10 +1317,10 @@ SECTION: IMAGES
             <div>
                 <div class="uk-card uk-card-small uk-card-secondary fit-width">
                     <div class="uk-card-media-bottom uk-text-center">
-                        <a href="assets/example-black-bg.png" data-caption="On top of a black background"><img src="assets/example-black-bg.png" alt=""></a>
+                        <a href="assets/example-black-bg.png" data-caption="On top of a black background"><img src="assets/example-matrix-bg.png" alt=""></a>
                     </div>
                     <div class="uk-card-body">
-                        <p class="uk-h5 uk-text-center">On top of a black background</p>
+                        <p class="uk-h5 uk-text-center">Transform matrix </p>
                     </div>
                 </div>
             </div>
@@ -1327,10 +1328,10 @@ SECTION: IMAGES
             <div>
                 <div class="uk-card uk-card-small uk-card-secondary fit-width">
                     <div class="uk-card-media-bottom uk-text-center">
-                        <a href="assets/example-white-bg.png" data-caption="On top of a white background"><img src="assets/example-white-bg.png" alt=""></a>
+                        <a href="assets/example-white-bg.png" data-caption="On top of a white background"><img src="assets/example-transparent-bg.png" alt=""></a>
                     </div>
                     <div class="uk-card-body">
-                        <p class="uk-h5 uk-text-center">On top of a white background</p>
+                        <p class="uk-h5 uk-text-center">Processed image</p>
                     </div>
                 </div>
             </div>
@@ -1341,7 +1342,7 @@ SECTION: IMAGES
                         <a href="assets/example-image-bg.png" data-caption="On top of any other image"><img src="assets/example-image-bg.png" alt=""></a>
                     </div>
                     <div class="uk-card-body">
-                        <p class="uk-h5 uk-text-center">On top of any other image</p>
+                        <p class="uk-h5 uk-text-center">Onto another one</p>
                     </div>
                 </div>
             </div>
@@ -1392,12 +1393,10 @@ SCRIPTS
             showCount: false,
             shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
         });
-
         // $.rFrame({device:'Android',view:0});
     });
 
-    if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent))
-    {
+    if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
         // If IE browser, use Babel transpiler because it is not ES6 compliant.
         document.write('<script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"><\/script>');
         document.write('<script type="text/babel" src="endless.js"><\/script>');
@@ -1405,8 +1404,7 @@ SCRIPTS
         document.write('<script type="text/babel" src="site.js" type="text/babel"><\/script>');
         // document.write('<script src="http://www.i-creativ.com/endless/site.js" type="text/babel"><\/script>');
     }
-    else
-    {
+    else {
         document.write('<script type="text/javascript" src="endless.js"><\/script>');
         document.write('<script type="text/javascript" src="site.js"><\/script>');
     }
